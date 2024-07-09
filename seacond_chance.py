@@ -197,6 +197,7 @@ class SeacondChance:
         # Create an obstacle and keep adding obstacles until there's no room left.
         # Spacing between obstacles is one obstacle width and one obstacle height.
         obstacle = Obstacle(self)
+        
         obstacle_width, obstacle_height = obstacle.rect.size
 
         current_x, current_y = obstacle_width, obstacle_height
@@ -208,6 +209,7 @@ class SeacondChance:
             # Finished a row; reset x value, and increment y value.
             current_x = obstacle_width
             current_y += 2 * obstacle_height
+        self.obstacles.add(obstacle)
 
     def _create_obstacle(self, x_position, y_position):
         """Create an obstacle and place it in the fleet."""

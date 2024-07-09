@@ -14,6 +14,8 @@ class Diver(Sprite):
 
         # Load the diver image and get its rect.
         self.image = pygame.image.load('images/diver.bmp')
+        self.image = pygame.transform.smoothscale(self.image, (100, 80))
+
         self.rect = self.image.get_rect()
 
         # Start each new diver at the bottom center of the screen.

@@ -14,6 +14,7 @@ class Obstacle(Sprite):
 
         # Load the obstacle image and set its rect attribute.
         self.image = pygame.image.load('images/obstacle.bmp')
+        self.image = pygame.transform.smoothscale(self.image, (70, 70))
         self.rect = self.image.get_rect()
 
         # Start each new obstacle near the top left of the screen.
