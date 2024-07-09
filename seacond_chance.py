@@ -11,6 +11,9 @@ from diver import Diver
 from bullet import Bullet
 from obstacle import Obstacle
 
+import random
+import math
+
 
 class SeacondChance:
     """Overall class to manage game assets and behavior."""
@@ -20,11 +23,13 @@ class SeacondChance:
         pygame.init()
         self.clock = pygame.time.Clock()
         self.settings = Settings()
+        self.settings.create_waves()
 
         self.screen = pygame.display.set_mode(
             (self.settings.screen_width, self.settings.screen_height))
         pygame.display.set_caption("Seacond Chance")
-
+        
+    
         # Create an instance to store game statistics,
         #   and create a scoreboard.
         self.stats = GameStats(self)
@@ -42,6 +47,7 @@ class SeacondChance:
         # Make the Play button.
         self.play_button = Button(self, "Play")
 
+   
     def run_game(self):
         """Start the main loop for the game."""
         while True:
@@ -234,7 +240,10 @@ class SeacondChance:
 
     def _update_screen(self):
         """Update images on the screen, and flip to the new screen."""
+        # Draw wave pattern for background
         self.screen.fill(self.settings.bg_color)
+        self.settings.draw_waves(self.screen)
+        
         for bullet in self.bullets.sprites():
             bullet.draw_bullet()
         self.diver.blitme()
@@ -248,8 +257,7 @@ class SeacondChance:
             self.play_button.draw_button()
 
         pygame.display.flip()
-
-
+    
 if __name__ == '__main__':
     # Make a game instance, and run the game.
     ai = SeacondChance()
